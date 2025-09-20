@@ -188,7 +188,7 @@ if (chatModal) {
   const appendMessage = (sender, text) => {
     if (!chatThread) return;
     const message = document.createElement('div');
-    message.className = `chat-message from-${sender}`;
+    message.classList.add('chat-message', `chat-message--${sender}`);
     message.setAttribute('data-message-sender', sender);
 
     const bubble = document.createElement('p');
@@ -269,6 +269,7 @@ if (chatModal) {
     replyTimeoutId = window.setTimeout(() => {
       toggleTyping(false);
       appendMessage('chandar', getCannedReply());
+      replyTimeoutId = null;
     }, 900);
   });
 }
