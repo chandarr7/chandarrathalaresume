@@ -325,6 +325,91 @@
     </section>
   </main>
 
+  <section class="chat-modal" data-chat-modal>
+    <button
+      class="chat-launcher"
+      type="button"
+      data-chat-open
+      aria-haspopup="dialog"
+      aria-controls="live-chat-dialog"
+      aria-expanded="false"
+    >
+      Let's Chat
+    </button>
+    <div
+      class="chat-modal-dialog"
+      data-chat-dialog
+      id="live-chat-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="live-chat-title"
+      aria-hidden="true"
+    >
+      <header class="chat-modal-header">
+        <div class="chat-modal-title-group">
+          <p class="chat-modal-eyebrow">Backstage Access</p>
+          <h2 id="live-chat-title">Live chat with Chandar</h2>
+          <p class="chat-modal-subtitle">
+            Swap ideas about dashboards, delivery timelines, or the next analytics premiere.
+          </p>
+        </div>
+        <button type="button" class="chat-close" data-chat-close aria-label="Close live chat">
+          <span aria-hidden="true">×</span>
+        </button>
+      </header>
+      <div class="chat-modal-content">
+        <nav class="chat-quick-links" aria-label="Quick links">
+          <h3 class="chat-quick-links-title">Quick links</h3>
+          <ul>
+            <li><a href="#portfolio">Explore portfolio highlights</a></li>
+            <li>
+              <a href="assets/Chandar_Rathala_Resume.pdf" target="_blank" rel="noopener"
+                >Download the latest resume</a
+              >
+            </li>
+            <li><a href="#contact">Book a discovery call</a></li>
+          </ul>
+        </nav>
+        <div class="chat-panel">
+          <div
+            class="chat-thread"
+            data-chat-thread
+            role="log"
+            aria-live="polite"
+            aria-relevant="additions"
+            aria-label="Conversation with Chandar"
+            tabindex="0"
+          >
+            <div class="chat-message from-chandar" data-message-sender="chandar">
+              <p class="chat-bubble">
+                Hi there! I'm Chandar. Share your team's data storyline and I'll queue up how we can collaborate.
+              </p>
+            </div>
+          </div>
+          <div class="typing-indicator" data-typing role="status" aria-live="polite" hidden>
+            <span class="typing-label">Chandar is typing</span>
+            <span class="typing-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+          </div>
+          <form class="chat-input" data-chat-form aria-label="Send a live message to Chandar" novalidate>
+            <label class="visually-hidden" for="chat-message-input">Type your message</label>
+            <input
+              id="chat-message-input"
+              name="message"
+              type="text"
+              data-chat-input
+              placeholder="Ask about analytics, metrics, or next steps..."
+              autocomplete="off"
+              required
+            />
+            <button type="submit" class="chat-send">
+              <span>Send</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer id="contact" class="footer">
     <div class="footer-content">
       <div class="footer-intro">
