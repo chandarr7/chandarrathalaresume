@@ -327,14 +327,30 @@
 
   <footer id="contact" class="footer">
     <div class="footer-content">
-      <div>
+      <div class="footer-intro">
         <h4>Ready for the next season?</h4>
         <p>Let’s collaborate on data narratives that keep decision-makers on the edge of their seats.</p>
+        <div class="footer-actions">
+          <a class="cta primary" href="mailto:chandarrathala7@gmail.com">Contact Chandar</a>
+          <a class="cta secondary" href="https://www.linkedin.com/in/chandar-rathala" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        </div>
       </div>
-      <div class="footer-actions">
-        <a class="cta primary" href="mailto:chandarrathala7@gmail.com">Contact Chandar</a>
-        <a class="cta secondary" href="https://www.linkedin.com/in/chandar-rathala" target="_blank" rel="noopener">Connect on LinkedIn</a>
-      </div>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-field">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="fullName" autocomplete="name" required />
+        </div>
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" autocomplete="email" required />
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" autocomplete="off" required></textarea>
+        </div>
+        <button type="submit" class="cta primary submit-button">Send Message</button>
+        <p class="form-status" data-status role="status" aria-live="polite"></p>
+      </form>
     </div>
     <p class="footer-meta">© <span id="year"></span> Chandar Rathala. Streaming excellence in data analytics.</p>
   </footer>
