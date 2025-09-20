@@ -94,11 +94,11 @@ main {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: clamp(0.75rem, 2.5vw, 1.5rem);
+  gap: clamp(1rem, 3vw, 2rem);
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 1.6vw, 0.9rem);
   text-transform: uppercase;
   letter-spacing: 0.22em;
 }
@@ -108,6 +108,7 @@ main {
   color: var(--text-muted);
   text-decoration: none;
   padding: 0.35rem 0;
+  font-weight: 600;
   transition: color 0.3s ease;
 }
 
@@ -704,36 +705,54 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.footer {
-  margin-top: 6rem;
-  padding: 3rem clamp(1.5rem, 4vw, 3rem) 2.5rem;
+.section.contact {
+  padding: clamp(2.75rem, 6vw, 4rem);
+  border-radius: var(--radius-lg);
   background: radial-gradient(circle at top, rgba(229, 9, 20, 0.25), rgba(7, 7, 9, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 40px 90px -60px rgba(0, 0, 0, 0.9);
 }
 
-.footer-content {
+.contact-wrapper {
   max-width: var(--max-width);
-  margin: 0 auto 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
 }
 
-.footer-content h4 {
+.contact-copy {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-copy h3 {
   margin: 0;
   font-family: 'Oswald', 'Roboto', sans-serif;
-  font-size: 1.75rem;
+  font-size: clamp(1.85rem, 3vw, 2.5rem);
 }
 
-.footer-content p {
+.contact-copy p {
   margin: 0;
   color: rgba(255, 255, 255, 0.78);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-.footer-actions {
+.contact-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.contact-actions .cta {
+  min-width: 200px;
+  justify-content: center;
+}
+
+.footer {
+  margin-top: 4rem;
+  padding: 2.5rem clamp(1.5rem, 4vw, 3rem);
+  background: linear-gradient(180deg, rgba(7, 7, 9, 0.85), rgba(7, 7, 9, 0.95));
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .footer-meta {
@@ -758,6 +777,15 @@ main {
 
   .resume-actions .cta {
     width: auto;
+  }
+
+  .contact-wrapper {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .contact-actions {
+    justify-content: flex-end;
   }
 }
 
@@ -813,6 +841,14 @@ main {
 
   .carousel-control {
     display: none;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
+
+  .contact-actions .cta {
+    width: 100%;
   }
 }
 
