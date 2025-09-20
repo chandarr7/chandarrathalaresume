@@ -713,9 +713,13 @@ main {
 .footer-content {
   max-width: var(--max-width);
   margin: 0 auto 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.footer-intro {
+  display: grid;
+  gap: 1.25rem;
 }
 
 .footer-content h4 {
@@ -734,6 +738,90 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.contact-form {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 35px 70px -60px rgba(0, 0, 0, 0.9);
+}
+
+.form-field {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.contact-form label {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(7, 7, 9, 0.7);
+  color: var(--text-light);
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: none;
+  border-color: var(--netflix-red);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.25);
+  background: rgba(7, 7, 9, 0.85);
+}
+
+.contact-form textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.contact-form .submit-button {
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  justify-content: center;
+}
+
+.contact-form .submit-button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.form-status {
+  min-height: 1.2em;
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.form-status.is-error {
+  color: #ff6b6b;
+}
+
+.form-status.is-success {
+  color: #4ade80;
+}
+
+.form-status.is-pending {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .footer-meta {
@@ -757,6 +845,15 @@ main {
   }
 
   .resume-actions .cta {
+    width: auto;
+  }
+
+  .footer-content {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .contact-form .submit-button {
     width: auto;
   }
 }
@@ -794,6 +891,10 @@ main {
 
   .poster-card {
     min-width: clamp(220px, 70vw, 280px);
+  }
+
+  .contact-form .submit-button {
+    width: 100%;
   }
 }
 
