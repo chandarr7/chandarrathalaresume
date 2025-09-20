@@ -380,17 +380,17 @@
             aria-label="Conversation with Chandar"
             tabindex="0"
           >
-            <div class="chat-message from-chandar" data-message-sender="chandar">
+            <div class="chat-message chat-message--chandar" data-message-sender="chandar">
               <p class="chat-bubble">
                 Hi there! I'm Chandar. Share your team's data storyline and I'll queue up how we can collaborate.
               </p>
             </div>
           </div>
-          <div class="typing-indicator" data-typing role="status" aria-live="polite" hidden>
-            <span class="typing-label">Chandar is typing</span>
-            <span class="typing-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+          <div class="chat-typing" data-typing role="status" aria-live="polite" hidden>
+            <span class="chat-typing__label">Chandar is typing</span>
+            <span class="chat-typing__dots" aria-hidden="true"><span></span><span></span><span></span></span>
           </div>
-          <form class="chat-input" data-chat-form aria-label="Send a live message to Chandar" novalidate>
+          <form class="chat-form" data-chat-form aria-label="Send a live message to Chandar" novalidate>
             <label class="visually-hidden" for="chat-message-input">Type your message</label>
             <input
               id="chat-message-input"
