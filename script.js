@@ -45,3 +45,84 @@ carousels.forEach((carousel) => {
   window.addEventListener('resize', toggleControls);
   toggleControls();
 });
+
+const chatModal = document.querySelector('[data-chat-modal]');
+const chatOverlay = document.querySelector('[data-chat-overlay]');
+const chatOpeners = document.querySelectorAll('[data-chat-open]');
+const chatCloseBtn = document.querySelector('[data-chat-close]');
+
+if (chatModal && chatOverlay) {
+  const focusableSelector =
+    'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+  let lastFocusedElement = null;
+  const transitionDuration = 300;
+
+  const openChat = () => {
+    if (chatModal.classList.contains('is-visible')) return;
+
+    lastFocusedElement = document.activeElement;
+    chatModal.hidden = false;
+    chatOverlay.hidden = false;
+    chatModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('is-chat-open');
+
+    requestAnimationFrame(() => {
+      chatModal.classList.add('is-visible');
+      chatOverlay.classList.add('is-visible');
+      const focusTarget =
+        chatModal.querySelector('[data-autofocus]') || chatModal.querySelector(focusableSelector);
+      focusTarget?.focus({ preventScroll: true });
+    });
+  };
+
+  const closeChat = () => {
+    if (!chatModal.classList.contains('is-visible')) return;
+
+    chatModal.classList.remove('is-visible');
+    chatOverlay.classList.remove('is-visible');
+    chatModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('is-chat-open');
+
+    window.setTimeout(() => {
+      chatModal.hidden = true;
+      chatOverlay.hidden = true;
+      if (lastFocusedElement instanceof HTMLElement) {
+        lastFocusedElement.focus({ preventScroll: true });
+      }
+      lastFocusedElement = null;
+    }, transitionDuration);
+  };
+
+  chatOpeners.forEach((opener) => opener.addEventListener('click', openChat));
+  chatCloseBtn?.addEventListener('click', closeChat);
+  chatOverlay.addEventListener('click', closeChat);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && chatModal.classList.contains('is-visible')) {
+      closeChat();
+    }
+  });
+
+  chatModal.addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab' || !chatModal.classList.contains('is-visible')) {
+      return;
+    }
+
+    const focusable = Array.from(chatModal.querySelectorAll(focusableSelector)).filter(
+      (element) => !element.hasAttribute('disabled') && element.getAttribute('tabindex') !== '-1'
+    );
+
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus({ preventScroll: true });
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus({ preventScroll: true });
+    }
+  });
+}

@@ -333,11 +333,66 @@
       </div>
       <div class="footer-actions">
         <a class="cta primary" href="mailto:chandarrathala7@gmail.com">Contact Chandar</a>
+        <button class="cta tertiary chat-trigger" type="button" data-chat-open>
+          <span aria-hidden="true">💬</span>
+          <span>Chat with Chandar</span>
+        </button>
         <a class="cta secondary" href="https://www.linkedin.com/in/chandar-rathala" target="_blank" rel="noopener">Connect on LinkedIn</a>
       </div>
     </div>
     <p class="footer-meta">© <span id="year"></span> Chandar Rathala. Streaming excellence in data analytics.</p>
   </footer>
+
+  <div class="chat-backdrop" data-chat-overlay hidden></div>
+  <section
+    class="chat-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="chatModalTitle"
+    aria-describedby="chatModalDescription"
+    aria-hidden="true"
+    data-chat-modal
+    hidden
+  >
+    <header class="chat-modal__header">
+      <div>
+        <p class="chat-eyebrow">Live from the data studio</p>
+        <h2 id="chatModalTitle">Chat with Chandar</h2>
+      </div>
+      <button type="button" class="chat-close" data-chat-close aria-label="Close chat panel">
+        <span aria-hidden="true">×</span>
+      </button>
+    </header>
+    <p id="chatModalDescription" class="chat-modal__intro">
+      Share what you're exploring and I'll queue up insights, case studies, or custom dashboards on demand.
+    </p>
+    <div class="chat-modal__body">
+      <a
+        class="chat-option"
+        href="mailto:chandarrathala7@gmail.com?subject=Let%27s%20chat%20about%20data"
+        data-autofocus
+      >
+        <span class="chat-option__icon" aria-hidden="true">📧</span>
+        <span class="chat-option__content">
+          <strong>Email the studio</strong>
+          <small>Send a note and I'll respond faster than the next episode drops.</small>
+        </span>
+      </a>
+      <a class="chat-option" href="https://www.linkedin.com/in/chandar-rathala" target="_blank" rel="noopener">
+        <span class="chat-option__icon" aria-hidden="true">💼</span>
+        <span class="chat-option__content">
+          <strong>Connect on LinkedIn</strong>
+          <small>DM me for collaboration ideas or portfolio deep-dives.</small>
+        </span>
+      </a>
+    </div>
+    <footer class="chat-modal__footer">
+      <p>
+        Prefer scheduling?
+        <a href="mailto:chandarrathala7@gmail.com?subject=Book%20a%20data%20chat">Request a meeting slot.</a>
+      </p>
+    </footer>
+  </section>
 
   <script src="script.js"></script>
 </body>
