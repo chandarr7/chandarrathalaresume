@@ -113,3 +113,162 @@ if (contactForm) {
     }, 700);
   });
 }
+
+const chatModal = document.querySelector('[data-chat-modal]');
+
+if (chatModal) {
+  const chatDialog = chatModal.querySelector('[data-chat-dialog]');
+  const chatOpenButton = chatModal.querySelector('[data-chat-open]');
+  const chatCloseButton = chatModal.querySelector('[data-chat-close]');
+  const chatForm = chatModal.querySelector('[data-chat-form]');
+  const chatInput = chatForm?.querySelector('[data-chat-input]');
+  const chatThread = chatModal.querySelector('[data-chat-thread]');
+  const typingIndicator = chatModal.querySelector('[data-typing]');
+  const focusableSelectors =
+    'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+  let isTrapActive = false;
+  let previouslyFocusedElement = null;
+  let replyTimeoutId = null;
+  let replyIndex = 0;
+
+  const cannedReplies = [
+    "Thanks for the note! I'll send over more details shortly.",
+    'Appreciate you reaching out—let me line up a quick follow-up for us.',
+    'Sounds great! I will drop you a message with examples we can explore together.'
+  ];
+
+  const getCannedReply = () => {
+    const reply = cannedReplies[replyIndex % cannedReplies.length];
+    replyIndex += 1;
+    return reply;
+  };
+
+  const isElementVisible = (element) => {
+    if (!element) return false;
+    return element.getClientRects().length > 0;
+  };
+
+  const trapFocus = (event) => {
+    if (!isTrapActive || !chatDialog) return;
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeChat();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusable = Array.from(chatDialog.querySelectorAll(focusableSelectors)).filter((element) =>
+      isElementVisible(element)
+    );
+
+    if (focusable.length === 0) return;
+
+    const firstElement = focusable[0];
+    const lastElement = focusable[focusable.length - 1];
+    const isShiftPressed = event.shiftKey;
+    const activeElement = document.activeElement;
+
+    if (!isShiftPressed && activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    } else if (isShiftPressed && activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    }
+  };
+
+  const scrollThreadToBottom = () => {
+    if (!chatThread) return;
+    chatThread.scrollTo({ top: chatThread.scrollHeight, behavior: 'smooth' });
+  };
+
+  const appendMessage = (sender, text) => {
+    if (!chatThread) return;
+    const message = document.createElement('div');
+    message.className = `chat-message from-${sender}`;
+    message.setAttribute('data-message-sender', sender);
+
+    const bubble = document.createElement('p');
+    bubble.className = 'chat-bubble';
+    bubble.textContent = text;
+
+    message.appendChild(bubble);
+    chatThread.appendChild(message);
+    scrollThreadToBottom();
+  };
+
+  const toggleTyping = (isTyping) => {
+    if (!typingIndicator) return;
+    typingIndicator.hidden = !isTyping;
+    typingIndicator.setAttribute('aria-hidden', String(!isTyping));
+    scrollThreadToBottom();
+  };
+
+  const openChat = () => {
+    if (!chatDialog) return;
+    chatModal.classList.add('is-open');
+    chatDialog.setAttribute('aria-hidden', 'false');
+    chatOpenButton?.setAttribute('aria-expanded', 'true');
+    previouslyFocusedElement = document.activeElement;
+    isTrapActive = true;
+    document.addEventListener('keydown', trapFocus);
+    window.requestAnimationFrame(() => {
+      chatInput?.focus();
+      scrollThreadToBottom();
+    });
+  };
+
+  const closeChat = () => {
+    if (!chatDialog) return;
+    chatModal.classList.remove('is-open');
+    chatDialog.setAttribute('aria-hidden', 'true');
+    chatOpenButton?.setAttribute('aria-expanded', 'false');
+    isTrapActive = false;
+    document.removeEventListener('keydown', trapFocus);
+    if (replyTimeoutId) {
+      window.clearTimeout(replyTimeoutId);
+      replyTimeoutId = null;
+    }
+    toggleTyping(false);
+    previouslyFocusedElement?.focus();
+  };
+
+  chatOpenButton?.addEventListener('click', () => {
+    if (chatModal.classList.contains('is-open')) {
+      closeChat();
+    } else {
+      openChat();
+    }
+  });
+
+  chatCloseButton?.addEventListener('click', () => {
+    closeChat();
+  });
+
+  chatForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const message = (chatInput?.value || '').toString().trim();
+    if (!message) {
+      chatInput?.focus();
+      return;
+    }
+
+    appendMessage('user', message);
+    chatForm.reset();
+    chatInput?.focus();
+
+    toggleTyping(true);
+
+    if (replyTimeoutId) {
+      window.clearTimeout(replyTimeoutId);
+    }
+
+    replyTimeoutId = window.setTimeout(() => {
+      toggleTyping(false);
+      appendMessage('chandar', getCannedReply());
+    }, 900);
+  });
+}
