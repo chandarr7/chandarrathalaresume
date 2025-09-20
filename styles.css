@@ -341,7 +341,7 @@ main {
   color: var(--netflix-red);
 }
 
-.section.portfolio {
+.pop-hub {
   position: relative;
   padding: clamp(2.5rem, 5vw, 3.75rem);
   border-radius: var(--radius-lg);
@@ -351,13 +351,18 @@ main {
   overflow: hidden;
 }
 
-.section.portfolio::after {
+.pop-hub::after {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 20% 80%, rgba(229, 9, 20, 0.18), transparent 55%);
   pointer-events: none;
   mix-blend-mode: screen;
+}
+
+.pop-hub > * {
+  position: relative;
+  z-index: 1;
 }
 
 .portfolio-grid {
@@ -453,6 +458,15 @@ main {
 .portfolio-link:hover {
   background: rgba(229, 9, 20, 0.3);
   transform: translateY(-2px);
+}
+
+.featured-reel {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.section-header.subheader {
+  gap: 0.35rem;
 }
 
 .carousel {
