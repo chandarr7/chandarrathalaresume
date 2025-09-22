@@ -1,447 +1,1346 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chandar Rathala | Data Analyst Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="top-nav">
-    <div class="brand">
-      <span class="logo-pill">CR</span>
-      <div class="brand-text">
-        <h1>Chandar Rathala</h1>
-        <p>Data Analyst · Streaming Impact</p>
-      </div>
-    </div>
-    <nav class="main-nav" aria-label="Primary">
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+.chat-modal-dialog {
+  width: min(380px, calc(100vw - 2.5rem));
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(155deg, rgba(20, 20, 22, 0.98), rgba(7, 7, 9, 0.94));
+  box-shadow: 0 45px 85px -50px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(16px) scale(0.97);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
 
-  <main>
-    <section id="about" class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <p class="tagline">Now Streaming: Data-Driven Thrillers</p>
-        <h2>Transforming raw numbers into binge-worthy decisions.</h2>
-        <p class="summary">Data Analyst with 4+ years of experience powering healthcare, finance, and climate-security adventures. Expert in SQL, Python, BI, and cloud warehousing with a track record of reducing costs, accelerating insights, and building reliable data products.</p>
-        <div class="hero-actions">
-          <a class="cta primary" href="#featured-projects">▶ Play Career</a>
-          <a class="cta secondary" href="#contact">+ Add to Watchlist</a>
-        </div>
-        <dl class="hero-highlights">
-          <div>
-            <dt>40%</dt>
-            <dd>Infrastructure savings delivered</dd>
-          </div>
-          <div>
-            <dt>55%</dt>
-            <dd>ETL pipeline optimization</dd>
-          </div>
-          <div>
-            <dt>2 Days</dt>
-            <dd>Reporting cycle turnaround</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
+.chat-modal.is-open .chat-modal-dialog {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
 
-    <section id="featured-projects" class="section pop-hub">
-      <header class="section-header">
-        <p class="eyebrow">Now Streaming</p>
-        <h3>Portfolio</h3>
-        <p class="section-subtitle">Flagship analytics productions blending immersive visuals and trusted insights.</p>
-      </header>
+.chat-modal.is-open .chat-launcher {
+  display: none;
+}
 
-      <div class="portfolio-grid" role="list">
-        <article class="portfolio-card" role="listitem">
-          <div class="portfolio-card-body">
-            <p class="portfolio-role">Data Analyst</p>
-            <h4>HR-Analysis-Dashboard</h4>
-            <p>Attrition intelligence hub with real-time refreshes that keep talent strategies ahead of the plot twists.</p>
-          </div>
-          <a class="portfolio-link" href="https://www.novypro.com/project/hr-analysis-dashboard" target="_blank" rel="noopener">View Project</a>
-        </article>
+.chat-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
 
-        <article class="portfolio-card" role="listitem">
-          <div class="portfolio-card-body">
-            <p class="portfolio-role">Data Analyst</p>
-            <h4>Business-Insights-360</h4>
-            <p>Executive-ready commerce universe tracking revenue, marketing, and supply plotlines in a single bingeable view.</p>
-          </div>
-          <a class="portfolio-link" href="https://www.novypro.com/project/business-insights-360" target="_blank" rel="noopener">View Project</a>
-        </article>
-      </div>
+.chat-modal-title-group {
+  display: grid;
+  gap: 0.4rem;
+}
 
-      <div class="featured-reel">
-        <header class="section-header subheader">
-          <p class="eyebrow">Featured Missions</p>
-          <h3>Original Productions</h3>
-          <p class="section-subtitle">Projects engineered to keep stakeholders glued to their dashboards.</p>
-        </header>
+.chat-modal-eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: rgba(229, 9, 20, 0.75);
+  font-size: 0.7rem;
+}
 
-        <div class="carousel" data-carousel>
-          <button class="carousel-control prev" data-action="prev" aria-label="Scroll previous">
-            <span>‹</span>
-          </button>
-          <div class="carousel-track" role="list">
-            <article class="poster-card" role="listitem">
-              <div class="poster-top">
-                <span class="category">Analytics Saga</span>
-                <span class="runtime">2025 · Power BI · SQL</span>
-              </div>
-              <div class="poster-content">
-                <h4>Business 360: E-commerce Sales Analytics</h4>
-                <p>Multi-tab Power BI universe unifying product, customer, and forecasting insights for decisive pricing and growth strategies.</p>
-                <div class="poster-meta">
-                  <span class="badge">Forecasting</span>
-                  <span class="badge">Segmentation</span>
-                </div>
-                <a class="watch-trailer" href="#portfolio">Watch Trailer</a>
-              </div>
-            </article>
+.chat-modal-header h2 {
+  margin: 0;
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+}
 
-            <article class="poster-card" role="listitem">
-              <div class="poster-top">
-                <span class="category">People Ops Drama</span>
-                <span class="runtime">2024 · Power BI · ETL</span>
-              </div>
-              <div class="poster-content">
-                <h4>HR Analysis Dashboard</h4>
-                <p>Attrition forecasting and workforce pulse tracking with 35% faster refresh rates and airtight data quality controls.</p>
-                <div class="poster-meta">
-                  <span class="badge">Attrition</span>
-                  <span class="badge">Data Quality</span>
-                </div>
-                <a class="watch-trailer" href="#portfolio">Watch Trailer</a>
-              </div>
-            </article>
+.chat-modal-subtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
 
-            <article class="poster-card" role="listitem">
-              <div class="poster-top">
-                <span class="category">Smart City Thriller</span>
-                <span class="runtime">2024 · React · PostgreSQL</span>
-              </div>
-              <div class="poster-content">
-                <h4>USF Parking Tracker</h4>
-                <p>Real-time parking intelligence with geospatial heatmaps, Azure deployment, and analytics dashboards for operational optimization.</p>
-                <div class="poster-meta">
-                  <span class="badge">Geospatial</span>
-                  <span class="badge">Real-time</span>
-                </div>
-                <a class="watch-trailer" href="#portfolio">Watch Trailer</a>
-              </div>
-            </article>
+.chat-close {
+  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
 
-            <article class="poster-card" role="listitem">
-              <div class="poster-top">
-                <span class="category">Security Sci-Fi</span>
-                <span class="runtime">2021 · Python · Django</span>
-              </div>
-              <div class="poster-content">
-                <h4>Blockchain E-Voting System</h4>
-                <p>Prototype election platform using blockchain principles to deliver transparent, tamper-resistant ballot simulations.</p>
-                <div class="poster-meta">
-                  <span class="badge">Blockchain</span>
-                  <span class="badge">Security</span>
-                </div>
-                <a class="watch-trailer" href="#portfolio">Watch Trailer</a>
-              </div>
-            </article>
+.chat-close:hover,
+.chat-close:focus-visible {
+  background: rgba(229, 9, 20, 0.4);
+  transform: scale(1.05);
+  outline: none;
+}
 
-            <article class="poster-card" role="listitem">
-              <div class="poster-top">
-                <span class="category">AI Feature</span>
-                <span class="runtime">2022 · Computer Vision</span>
-              </div>
-              <div class="poster-content">
-                <h4>Facial Recognition with AI</h4>
-                <p>Biometric experiment surpassing 90% accuracy on limited data, showcasing rapid model iteration and validation rigor.</p>
-                <div class="poster-meta">
-                  <span class="badge">Computer Vision</span>
-                  <span class="badge">Model Validation</span>
-                </div>
-                <a class="watch-trailer" href="#portfolio">Watch Trailer</a>
-              </div>
-            </article>
-          </div>
-          <button class="carousel-control next" data-action="next" aria-label="Scroll next">
-            <span>›</span>
-          </button>
-        </div>
-      </div>
-    </section>
+.chat-modal-content {
+  display: grid;
+  gap: 1.25rem;
+}
 
-    <section id="experience" class="section experience">
-      <header class="section-header">
-        <p class="eyebrow">Experience Channel</p>
-        <h3>Binge the Highlights</h3>
-      </header>
-      <div class="experience-grid">
-        <article class="experience-card">
-          <header>
-            <h4>Research Assistant / Teaching Assistant</h4>
-            <p class="meta">University of South Florida · Aug 2024 – Present</p>
-          </header>
-          <ul>
-            <li>Built climate-conflict risk models achieving 87% precision and 0.91 ROC-AUC powering U.S. Army policy briefs.</li>
-            <li>Designed visual frameworks influencing climate adaptation strategies across three regions.</li>
-            <li>Mentored 20+ undergraduates in SQL, Python, and BI with course evaluations rising 30%.</li>
-          </ul>
-        </article>
-        <article class="experience-card">
-          <header>
-            <h4>Research Assistant — Healthcare Data Project</h4>
-            <p class="meta">University of South Florida · Aug 2024 – Aug 2025</p>
-          </header>
-          <ul>
-            <li>Engineered ETL pipelines for 10M+ clinical records, enabling daily refreshes and a 45% processing cut.</li>
-            <li>Deployed validation controls reducing data errors by 28% while maintaining HIPAA compliance.</li>
-            <li>Implemented ML-based anomaly detection with 0.86 F1-score improving patient risk flagging by 10%.</li>
-          </ul>
-        </article>
-        <article class="experience-card">
-          <header>
-            <h4>Analyst II, Software Engineering</h4>
-            <p class="meta">DXC Technology · Feb 2022 – Jul 2024</p>
-          </header>
-          <ul>
-            <li>Migrated 600+ SAS programs and 1000+ datasets to AWS Redshift, saving $2.5M annually.</li>
-            <li>Optimized SQL and ETL workflows from 8 hours to 3.5 hours, boosting SLA adherence by 20%.</li>
-            <li>Led A/B testing and Power BI adoption, accelerating executive reporting by three days.</li>
-          </ul>
-        </article>
-        <article class="experience-card">
-          <header>
-            <h4>Data Analyst Intern (Virtual)</h4>
-            <p class="meta">KPMG & Standard Bank · 2021 – 2022</p>
-          </header>
-          <ul>
-            <li>Delivered SQL, Snowflake, and Tableau simulations enhancing engagement metrics by 20%.</li>
-            <li>Automated governance-ready financial reporting with Python-driven dashboards.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+.chat-quick-links {
+  display: grid;
+  gap: 0.75rem;
+}
 
-    <section id="resume" class="section resume">
-      <header class="section-header">
-        <p class="eyebrow">Resume Hub</p>
-        <h3>Download the Feature-Length Resume</h3>
-        <p class="section-subtitle">Grab the full PDF or request a tailored cut aligned to your team's priorities.</p>
-      </header>
-      <div class="resume-body">
-        <div class="resume-summary">
-          <p>Each engagement blends technical rigor with high-impact storytelling that keeps executives and operators locked in.</p>
-          <ul class="resume-highlights">
-            <li>4+ years delivering analytics for healthcare, finance, and climate-security programs.</li>
-            <li>Trusted with AWS Redshift migrations, multi-million dollar savings, and rapid-fire BI delivery.</li>
-            <li>Graduate researcher at USF translating AI insights into policy-ready narratives.</li>
-          </ul>
-        </div>
-        <div class="resume-actions">
-          <a class="cta primary" href="assets/Chandar_Rathala_Resume.pdf" target="_blank" rel="noopener">Download PDF</a>
-          <a class="cta secondary" href="mailto:chandarrathala7@gmail.com?subject=Resume%20Request&body=Hi%20Chandar%2C%20could%20you%20share%20a%20tailored%20resume%20for%20our%20team%3F">Request a tailored version</a>
-        </div>
-      </div>
-    </section>
+.chat-quick-links-title {
+  margin: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.65);
+}
 
-    <section class="section stats">
-      <div class="section-header">
-        <p class="eyebrow">Skill Matrix</p>
-        <h3>Tech Stack & Specialties</h3>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <h4>Languages & Databases</h4>
-          <p>Python, SQL, R, Java, PostgreSQL, MySQL, SQL Server, BigQuery, Advanced Excel</p>
-        </div>
-        <div class="stat-card">
-          <h4>BI & Visualization</h4>
-          <p>Power BI (DAX, M Query), Tableau, Looker, AWS QuickSight</p>
-        </div>
-        <div class="stat-card">
-          <h4>Data Management</h4>
-          <p>ETL, Data Profiling, Data Mapping, Data Quality Monitoring, Storytelling</p>
-        </div>
-        <div class="stat-card">
-          <h4>Statistical Methods</h4>
-          <p>A/B Testing, Regression, Classification, Time Series, Model Validation</p>
-        </div>
-        <div class="stat-card">
-          <h4>Cloud & Big Data</h4>
-          <p>AWS Redshift, Google Cloud, Azure, Hadoop, Spark</p>
-        </div>
-        <div class="stat-card">
-          <h4>Collaboration & Soft Skills</h4>
-          <p>Jira, Confluence, GitHub, Stakeholder Communication, Change Management</p>
-        </div>
-      </div>
-    </section>
+.chat-quick-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
 
-    <section id="education" class="section education">
-      <header class="section-header">
-        <p class="eyebrow">Origin Story</p>
-        <h3>Education</h3>
-      </header>
-      <div class="education-grid">
-        <article class="education-card">
-          <h4>University of South Florida</h4>
-          <p class="meta">M.S. Artificial Intelligence & Business Analytics · CGPA 3.9/4 · Aug 2024 – Present</p>
-        </article>
-        <article class="education-card">
-          <h4>Jawaharlal Nehru Technological University</h4>
-          <p class="meta">B.Tech Computer Science · CGPA 3.7/4 · Aug 2017 – May 2021</p>
-        </article>
-      </div>
-    </section>
+.chat-quick-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
 
-    <section class="section certifications">
-      <header class="section-header">
-        <p class="eyebrow">Extended Universe</p>
-        <h3>Certifications</h3>
-      </header>
-      <ul class="cert-list">
-        <li>Stanford Online — Machine Learning (Mar 2025)</li>
-        <li>DeepLearning.AI — Deep Learning Specialization (Aug 2023)</li>
-        <li>Advanced SQL for Data Scientist (Jan 2023)</li>
-        <li>SQL for Data Science Certificate (Jan 2022)</li>
-        <li>IBM Data Science Professional Certificate (Nov 2021)</li>
-        <li>MySQL Database Mastery (Oct 2021)</li>
-        <li>Python from Basic to Advanced (Sept 2021)</li>
-      </ul>
-    </section>
-  </main>
+.chat-quick-links a::after {
+  content: '↗';
+  font-size: 0.8rem;
+  color: var(--netflix-red);
+}
 
-  <!-- Chat Modal Section -->
-  <section class="chat-modal" data-chat-modal>
-    <button
-      class="chat-launcher"
-      type="button"
-      data-chat-open
-      aria-haspopup="dialog"
-      aria-controls="live-chat-dialog"
-      aria-expanded="false"
-    >
-      Let's Chat
-    </button>
-    <div
-      class="chat-modal-dialog"
-      data-chat-dialog
-      id="live-chat-dialog"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="live-chat-title"
-      aria-hidden="true"
-    >
-      <header class="chat-modal-header">
-        <div class="chat-modal-title-group">
-          <p class="chat-modal-eyebrow">Backstage Access</p>
-          <h2 id="live-chat-title">Live chat with Chandar</h2>
-          <p class="chat-modal-subtitle">
-            Swap ideas about dashboards, delivery timelines, or the next analytics premiere.
-          </p>
-        </div>
-        <button type="button" class="chat-close" data-chat-close aria-label="Close live chat">
-          <span aria-hidden="true">×</span>
-        </button>
-      </header>
-      <div class="chat-modal-content">
-        <nav class="chat-quick-links" aria-label="Quick links">
-          <h3 class="chat-quick-links-title">Quick links</h3>
-          <ul>
-            <li><a href="#portfolio">Explore portfolio highlights</a></li>
-            <li>
-              <a href="assets/Chandar_Rathala_Resume.pdf" target="_blank" rel="noopener"
-                >Download the latest resume</a
-              >
-            </li>
-            <li><a href="#contact">Book a discovery call</a></li>
-          </ul>
-        </nav>
-        <div class="chat-panel">
-          <div
-            class="chat-thread"
-            data-chat-thread
-            role="log"
-            aria-live="polite"
-            aria-relevant="additions"
-            aria-label="Conversation with Chandar"
-            tabindex="0"
-          >
-            <div class="chat-message chat-message--chandar" data-message-sender="chandar">
-              <p class="chat-bubble">
-                Hi there! I'm Chandar. Share your team's data storyline and I'll queue up how we can collaborate.
-              </p>
-            </div>
-          </div>
-          <div class="chat-typing" data-typing role="status" aria-live="polite" hidden>
-            <span class="chat-typing__label">Chandar is typing</span>
-            <span class="chat-typing__dots" aria-hidden="true"><span></span><span></span><span></span></span>
-          </div>
-          <form class="chat-form" data-chat-form aria-label="Send a live message to Chandar" novalidate>
-            <label class="visually-hidden" for="chat-message-input">Type your message</label>
-            <input
-              id="chat-message-input"
-              name="message"
-              type="text"
-              data-chat-input
-              placeholder="Ask about analytics, metrics, or next steps..."
-              autocomplete="off"
-              required
-            />
-            <button type="submit" class="chat-send">
-              <span>Send</span>
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+.chat-quick-links a:hover,
+.chat-quick-links a:focus-visible {
+  background: rgba(229, 9, 20, 0.3);
+  border-color: rgba(229, 9, 20, 0.5);
+  transform: translateY(-1px);
+  outline: none;
+}
 
-  <!-- Footer Contact Section -->
-  <footer id="contact" class="footer">
-    <div class="footer-content">
-      <div class="footer-intro">
-        <h4>Ready for the next season?</h4>
-        <p>Let's collaborate on data narratives that keep decision-makers on the edge of their seats.</p>
-        <div class="footer-actions">
-          <a class="cta primary" href="mailto:chandarrathala7@gmail.com">Contact Chandar</a>
-          <a class="cta secondary" href="https://www.linkedin.com/in/chandar-rathala" target="_blank" rel="noopener">Connect on LinkedIn</a>
-        </div>
-      </div>
-      <form class="contact-form" id="contact-form" novalidate>
-        <div class="form-field">
-          <label for="full-name">Full Name</label>
-          <input type="text" id="full-name" name="fullName" autocomplete="name" required />
-        </div>
-        <div class="form-field">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" autocomplete="email" required />
-        </div>
-        <div class="form-field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" autocomplete="off" required></textarea>
-        </div>
-        <button type="submit" class="cta primary submit-button">Send Message</button>
-        <p class="form-status" data-status role="status" aria-live="polite"></p>
-      </form>
-    </div>
-    <p class="footer-meta">© <span id="year"></span> Chandar Rathala. Streaming excellence in data analytics.</p>
-  </footer>
+.chat-panel {
+  display: grid;
+  gap: 0.85rem;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.chat-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  max-height: clamp(220px, 38vh, 280px);
+  overflow-y: auto;
+  border-radius: var(--radius-sm);
+  background: rgba(8, 8, 10, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+.chat-thread:focus-visible {
+  outline: 2px solid var(--netflix-red);
+  outline-offset: 3px;
+}
+
+.chat-thread::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-thread::-webkit-scrollbar-thumb {
+  background: rgba(229, 9, 20, 0.45);
+  border-radius: 999px;
+}
+
+.chat-thread::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.chat-message {
+  display: flex;
+}
+
+.chat-bubble {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.8);
+}
+
+.chat-message--user {
+  justify-content: flex-end;
+}
+
+.chat-message--user .chat-bubble {
+  background: var(--netflix-red);
+  color: #fff;
+  border-bottom-right-radius: 0.35rem;
+}
+
+.chat-message--chandar .chat-bubble {
+  background: linear-gradient(145deg, rgba(229, 9, 20, 0.18), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(229, 9, 20, 0.28);
+  border-bottom-left-radius: 0.35rem;
+}
+
+.chat-typing {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  width: max-content;
+}
+
+.chat-typing__label {
+  font-weight: 500;
+}
+
+.chat-typing__dots {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.chat-typing__dots span {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  animation: typingDot 1.1s infinite ease-in-out;
+}
+
+.chat-typing__dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.chat-typing__dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.chat-form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0.35rem 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.chat-form input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+}
+
+.chat-form input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.chat-form input:focus {
+  outline: none;
+}
+
+.chat-send {
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1.1rem;
+  background: var(--netflix-red);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.chat-send:hover,
+.chat-send:focus-visible {
+  background: #ff2130;
+  box-shadow: 0 18px 38px -22px rgba(229, 9, 20, 0.75);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+@keyframes typingDot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-modal {
+    right: clamp(1rem, 5vw, 2rem);
+    bottom: clamp(1rem, 5vw, 2rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .chat-modal {
+    left: 0;
+    right: 0;
+    align-items: center;
+  }
+
+  .chat-modal-dialog {
+    width: min(420px, calc(100vw - 1.5rem));
+  }
+}
+
+@media (min-width: 768px) {
+  .resume-body {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .resume-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+  }
+
+  .resume-actions .cta {
+    width: auto;
+  }
+
+  .footer-content {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .contact-form .submit-button {
+    width: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .carousel-control.prev {
+    left: 0.25rem;
+  }
+
+  .carousel-control.next {
+    right: 0.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-nav {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    gap: 0.9rem;
+    font-size: 0.75rem;
+    justify-content: flex-start;
+  }
+
+  main {
+    padding-top: 5rem;
+  }
+
+  .hero {
+    min-height: 540px;
+  }
+
+  .poster-card {
+    min-width: clamp(220px, 70vw, 280px);
+  }
+
+  .contact-form .submit-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    border-radius: var(--radius-md);
+  }
+
+  .hero-content {
+    padding: 2rem;
+  }
+
+  .hero-highlights {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .carousel-control {
+    display: none;
+  }
+
+  .footer-actions {
+    flex-direction: column;
+  }
+
+  .footer-actions .cta {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .chat-typing__dots span {
+    animation: none !important;
+  }
+
+  .chat-modal-dialog,
+  .chat-launcher,
+  .chat-send,
+  .chat-close {
+    transition: none !important;
+  }
+}:root {
+  --netflix-red: #e50914;
+  --deep-black: #070709;
+  --rich-black: #0f0f0f;
+  --soft-black: #141414;
+  --text-light: #f5f5f5;
+  --text-muted: #9b9b9b;
+  --glow: rgba(229, 9, 20, 0.45);
+  --card-bg: linear-gradient(145deg, rgba(229, 9, 20, 0.78), rgba(10, 10, 10, 0.95));
+  --radius-lg: 1.75rem;
+  --radius-md: 1.25rem;
+  --radius-sm: 0.75rem;
+  --spacing: clamp(1rem, 2vw, 1.5rem);
+  --max-width: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--rich-black);
+  color: var(--text-light);
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 6rem clamp(1.5rem, 5vw, 4rem) 4rem;
+  position: relative;
+}
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem clamp(1.5rem, 4vw, 3.5rem);
+  background: linear-gradient(180deg, rgba(7, 7, 9, 0.95) 0%, rgba(7, 7, 9, 0.6) 90%, transparent 100%);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-pill {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--netflix-red);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.brand-text h1 {
+  font-size: clamp(1.1rem, 3vw, 1.75rem);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.brand-text p {
+  margin: 0.2rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.main-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.nav-links a {
+  position: relative;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--netflix-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  opacity: 0.9;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: #fff;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav-links a:focus-visible {
+  outline: none;
+}
+
+.hero {
+  position: relative;
+  min-height: min(600px, 70vh);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 20%, rgba(229, 9, 20, 0.75) 0%, rgba(7, 7, 9, 0.9) 55%, rgba(7, 7, 9, 0.95) 100%);
+  box-shadow: 0 50px 100px -40px rgba(0, 0, 0, 0.8);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1600&q=80') center/cover;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.hero-content {
+  position: relative;
+  padding: clamp(2.5rem, 6vw, 5rem);
+  max-width: 700px;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.tagline {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero h2 {
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.hero .summary {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.cta.primary {
+  background: var(--netflix-red);
+  color: #fff;
+  box-shadow: 0 20px 40px -20px var(--glow);
+}
+
+.cta.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 30px 50px -30px rgba(229, 9, 20, 0.6);
+}
+
+.hero-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.hero-highlights div {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.hero-highlights dt {
+  margin: 0;
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  font-size: 1.8rem;
+}
+
+.hero-highlights dd {
+  margin: 0.4rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.section-header {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.section-header h3 {
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin: 0;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  max-width: 560px;
+}
+
+.section.resume {
+  padding: clamp(2.75rem, 6vw, 4rem);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.32), rgba(15, 15, 15, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 40px 90px -60px rgba(0, 0, 0, 0.9);
+}
+
+.resume-body {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.resume-summary p {
+  margin: 0 0 1.5rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.8;
+}
+
+.resume-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.resume-highlights li {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+}
+
+.resume-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.resume-actions .cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  color: var(--netflix-red);
+}
+
+.pop-hub {
+  position: relative;
+  padding: clamp(2.5rem, 5vw, 3.75rem);
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at top right, rgba(229, 9, 20, 0.35), rgba(20, 20, 20, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 40px 90px -60px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+
+.pop-hub::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(229, 9, 20, 0.18), transparent 55%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.pop-hub > * {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-grid {
+  position: relative;
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  z-index: 1;
+}
+
+.portfolio-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(7, 7, 9, 0.85));
+  box-shadow: 0 25px 55px -45px rgba(0, 0, 0, 0.8);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.portfolio-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(229, 9, 20, 0.25), transparent 60%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 60px -40px rgba(229, 9, 20, 0.45);
+}
+
+.portfolio-card-body {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  z-index: 1;
+}
+
+.portfolio-role {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.portfolio-card h4 {
+  margin: 0;
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.portfolio-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+}
+
+.portfolio-link {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.portfolio-link::after {
+  content: '↗';
+  font-size: 0.85rem;
+  color: var(--netflix-red);
+}
+
+.portfolio-link:hover {
+  background: rgba(229, 9, 20, 0.3);
+  transform: translateY(-2px);
+}
+
+.featured-reel {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.section-header.subheader {
+  gap: 0.35rem;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 0 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--netflix-red) rgba(255, 255, 255, 0.08);
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carousel-track::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: var(--netflix-red);
+  border-radius: 999px;
+}
+
+.poster-card {
+  position: relative;
+  min-width: clamp(260px, 26vw, 320px);
+  height: 360px;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  background: var(--card-bg);
+  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.9);
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+.poster-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 55%);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+.poster-card .poster-top,
+.poster-card .poster-content {
+  position: relative;
+  z-index: 1;
+}
+
+.poster-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.poster-content h4 {
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  font-size: 1.35rem;
+  margin: 0 0 0.75rem;
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.poster-content p {
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.poster-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.watch-trailer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+}
+
+.watch-trailer::before {
+  content: '▶';
+  font-size: 0.9rem;
+  color: var(--netflix-red);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(7, 7, 9, 0.75);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+
+.carousel-control:hover {
+  background: rgba(229, 9, 20, 0.8);
+}
+
+.carousel-control.is-disabled,
+.carousel-control:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: rgba(7, 7, 9, 0.4);
+}
+
+.carousel-control.is-disabled:hover,
+.carousel-control:disabled:hover {
+  background: rgba(7, 7, 9, 0.4);
+}
+
+.carousel-control.prev {
+  left: -1.2rem;
+}
+
+.carousel-control.next {
+  right: -1.2rem;
+}
+
+.experience-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.experience-card {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 50px -40px rgba(0, 0, 0, 0.8);
+}
+
+.experience-card h4 {
+  margin: 0;
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  font-size: 1.35rem;
+}
+
+.experience-card .meta {
+  margin: 0.5rem 0 1rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.experience-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  min-height: 140px;
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+.stat-card h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.stat-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+}
+
+.education-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.education-card {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.education-card h4 {
+  margin: 0;
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.education-card .meta {
+  margin: 0.5rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.cert-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cert-list li {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Footer Styles */
+.footer {
+  margin-top: 4rem;
+  padding: clamp(2.75rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4rem);
+  background: radial-gradient(circle at top, rgba(229, 9, 20, 0.25), rgba(7, 7, 9, 0.95));
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.footer-content {
+  max-width: var(--max-width);
+  margin: 0 auto 2rem;
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.footer-intro {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.footer-intro h4 {
+  margin: 0;
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  font-size: clamp(1.85rem, 3vw, 2.5rem);
+}
+
+.footer-intro p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.7;
+}
+
+.footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-actions .cta {
+  min-width: 200px;
+  justify-content: center;
+}
+
+.contact-form {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 35px 70px -60px rgba(0, 0, 0, 0.9);
+}
+
+.form-field {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.contact-form label {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(7, 7, 9, 0.7);
+  color: var(--text-light);
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: none;
+  border-color: var(--netflix-red);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.25);
+  background: rgba(7, 7, 9, 0.85);
+}
+
+.contact-form textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.contact-form .submit-button {
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  justify-content: center;
+}
+
+.contact-form .submit-button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.form-status {
+  min-height: 1.2em;
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.form-status.is-error {
+  color: #ff6b6b;
+}
+
+.form-status.is-success {
+  color: #4ade80;
+}
+
+.form-status.is-pending {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-meta {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Chat Modal Styles */
+.chat-modal {
+  position: fixed;
+  bottom: clamp(1.5rem, 5vw, 2.75rem);
+  right: clamp(1.25rem, 5vw, 3rem);
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.chat-launcher {
+  pointer-events: auto;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  background: var(--netflix-red);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 20px 45px -25px rgba(229, 9, 20, 0.75);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.chat-launcher:hover,
+.chat-launcher:focus-visible {
+  transform: translateY(-2px);
+  background: #ff1f2f;
+  box-shadow: 0 28px 55px -24px rgba(229, 9, 20, 0.85);
+  outline: none;
+}
+
+.chat-modal-dialog {

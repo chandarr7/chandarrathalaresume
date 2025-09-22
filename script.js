@@ -1,8 +1,10 @@
+// Set current year in footer
 const yearEl = document.getElementById('year');
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
+// Carousel functionality
 const carousels = document.querySelectorAll('[data-carousel]');
 
 carousels.forEach((carousel) => {
@@ -46,6 +48,7 @@ carousels.forEach((carousel) => {
   toggleControls();
 });
 
+// Contact form functionality
 const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {
@@ -64,6 +67,7 @@ if (contactForm) {
     }
   };
 
+  // Clear status when user starts typing
   [nameInput, emailInput, messageInput].forEach((input) => {
     input?.addEventListener('input', () => setStatus('', null));
   });
@@ -76,6 +80,7 @@ if (contactForm) {
     const email = (formData.get('email') || '').toString().trim();
     const message = (formData.get('message') || '').toString().trim();
 
+    // Validation
     if (!fullName) {
       setStatus('Please share your name so I know who is reaching out.', 'error');
       nameInput?.focus();
@@ -101,19 +106,22 @@ if (contactForm) {
       return;
     }
 
+    // Simulate form submission
     setStatus('Sending…', 'pending');
     submitButton?.setAttribute('disabled', 'true');
     submitButton?.setAttribute('aria-busy', 'true');
 
+    // Simulate success after delay
     window.setTimeout(() => {
       contactForm.reset();
-      setStatus('Thanks for reaching out! I’ll respond as soon as possible.', 'success');
+      setStatus('Thanks for reaching out! I'll respond as soon as possible.', 'success');
       submitButton?.removeAttribute('disabled');
       submitButton?.removeAttribute('aria-busy');
     }, 700);
   });
 }
 
+// Chat modal functionality
 const chatModal = document.querySelector('[data-chat-modal]');
 
 if (chatModal) {
@@ -124,6 +132,7 @@ if (chatModal) {
   const chatInput = chatForm?.querySelector('[data-chat-input]');
   const chatThread = chatModal.querySelector('[data-chat-thread]');
   const typingIndicator = chatModal.querySelector('[data-typing]');
+  
   const focusableSelectors =
     'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
@@ -236,6 +245,7 @@ if (chatModal) {
     previouslyFocusedElement?.focus();
   };
 
+  // Event listeners
   chatOpenButton?.addEventListener('click', () => {
     if (chatModal.classList.contains('is-open')) {
       closeChat();
@@ -256,16 +266,20 @@ if (chatModal) {
       return;
     }
 
+    // Add user message
     appendMessage('user', message);
     chatForm.reset();
     chatInput?.focus();
 
+    // Show typing indicator
     toggleTyping(true);
 
+    // Clear any existing reply timeout
     if (replyTimeoutId) {
       window.clearTimeout(replyTimeoutId);
     }
 
+    // Add simulated reply after delay
     replyTimeoutId = window.setTimeout(() => {
       toggleTyping(false);
       appendMessage('chandar', getCannedReply());
